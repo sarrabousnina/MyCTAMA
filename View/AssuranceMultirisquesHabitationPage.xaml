@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.View.Details.AssuranceMultirisquesHabitationPage"
+             Title="Demande de Devis Assurance Habitation">
+
+    <Grid>
+        <!-- Define row heights for top, content, and footer sections -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <!-- Top section with background image -->
+        <AbsoluteLayout Grid.Row="0">
+            <Image Source="bck4.png"
+                   Aspect="AspectFill"
+                   Opacity="0.4"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+                   AbsoluteLayout.LayoutFlags="All" />
+
+            <!-- Title and logo in the top section -->
+            <StackLayout VerticalOptions="Start"
+                        HorizontalOptions="Center"
+                        Padding="10"
+                        AbsoluteLayout.LayoutBounds="0.5,0.3,0.8,0.5"
+                        AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="ctama_logo.png" HeightRequest="60"/>
+                    <Label Text="DEVIS HABITATION" 
+                           FontSize="24"
+                           TextColor="DarkOrange"
+                           VerticalOptions="Center"
+                           Margin="10,0"/>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+
+        <!-- Content section -->
+        <ScrollView Grid.Row="1" Padding="20" BackgroundColor="#f0f0f0">
+            <!-- Set ScrollView background color -->
+            <StackLayout Spacing="15" BackgroundColor="Transparent">
+                <!-- Set StackLayout background color to Transparent -->
+                <!-- Informations personnelles -->
+                <Label Text="Informations personnelles" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Entry Placeholder="Nom complet" BackgroundColor="White"/>
+                        <Entry Placeholder="Adresse complète" BackgroundColor="White"/>
+                        <Entry Placeholder="Ville" BackgroundColor="White"/>
+                        <Entry Placeholder="Code postal" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Téléphone" Keyboard="Telephone" BackgroundColor="White"/>
+                        <Entry Placeholder="Adresse e-mail" Keyboard="Email" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Détails sur le logement -->
+                <Label Text="Détails sur le logement" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Picker Title="Type de logement" BackgroundColor="White">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Maison individuelle</x:String>
+                                    <x:String>Appartement</x:String>
+                                    <x:String>Autre</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <Entry Placeholder="Superficie totale du logement en m²" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Nombre total de pièces" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Année de construction du logement" Keyboard="Numeric" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Couverture souhaitée -->
+                <Label Text="Couverture souhaitée" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Entry Placeholder="Montant de la couverture du bâtiment" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Montant de la couverture du contenu" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Montant de la couverture de la responsabilité civile" Keyboard="Numeric" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Détails complémentaires -->
+                <Label Text="Détails complémentaires" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Entry Placeholder="Présence d'équipements spécifiques (piscine, jacuzzi, etc.)" BackgroundColor="White"/>
+                        <Entry Placeholder="Description et valeur estimée" BackgroundColor="White"/>
+                        <Entry Placeholder="Sécurité du logement (systèmes d'alarme, serrures renforcées, etc.)" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Antécédents en matière de sinistres -->
+                <Label Text="Antécédents en matière de sinistres" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <Entry Placeholder="Historique des sinistres des 5 dernières années" BackgroundColor="White"/>
+                </Frame>
+
+                <!-- Remarques supplémentaires -->
+                <Label Text="Remarques supplémentaires" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <Editor Placeholder="Espace pour toute information supplémentaire que vous souhaitez partager" HeightRequest="100" BackgroundColor="White"/>
+                </Frame>
+
+                <!-- Submit Button -->
+                <Button Text="Soumettre la demande" 
+                HorizontalOptions="FillAndExpand" 
+                BackgroundColor="#1c4992"
+                VerticalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+            </StackLayout>
+        </ScrollView>
+
+
+        <!-- Footer with buttons -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     Spacing="10" 
+                     Padding="0,20,0,0"
+                     Grid.Row="2" 
+                     VerticalOptions="End">
+            <!-- Home Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf015;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHomeButtonClicked" />
+
+            <!-- Contact Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf095;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnContactButtonClicked" />
+
+            <!-- Help Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf05a;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHelpButtonClicked" />
+
+            <!-- Map Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf279;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMapButtonClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animation</title>
+    <style>
+        body {
+            background: white;
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .text-shine {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 12px 20px;
+            color: black;
+            background: linear-gradient(to right, #000000 20%, white 40%, #000000 60%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 10s linear infinite; /* Infinite loop */
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 200% center;
+            }
+
+            100% {
+                background-position: -200% center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-shine">Connectez-vous pour commencer !</div>
+</body>
+</html>

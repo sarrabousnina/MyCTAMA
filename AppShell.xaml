@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiApp2.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiApp2"
+    Shell.FlyoutBehavior="Disabled"
+    Title="MauiApp2">
+
+
+    <!--
+<ShellContent
+    Title="Home"
+    ContentTemplate="{DataTemplate local:MainPage}"
+    Route="MainPage" />
+-->
+
+
+    <ShellContent Title="Main Page" ContentTemplate="{DataTemplate local:MainPage}" />
+    <ShellContent Title="Login Page" ContentTemplate="{DataTemplate local:PageLogin}" />
+    <ShellContent Title="Menu Page" ContentTemplate="{DataTemplate local:MenuPage}" />
+    <ShellContent Title="Map" ContentTemplate="{DataTemplate local:MapPage}" />
+    <ShellContent Title="Contact" ContentTemplate="{DataTemplate local:ContactPage}" />
+
+</Shell>

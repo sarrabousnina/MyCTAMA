@@ -1,0 +1,196 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.CreateAccountPage"
+             Title="Create Account"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.75*" />
+            </Grid.RowDefinitions>
+
+            <!-- Gradient background for the top section -->
+            <Grid Grid.Row="0">
+                <WebView x:Name="GradientWebView"
+                 Source="c:\users\user\desktop\mauiapp2-master\resources\raw\bck.html"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"/>
+            </Grid>
+
+            <Frame Grid.Row="1"
+                   Margin="0,-30,0,0"
+                   CornerRadius="25"
+                   BackgroundColor="White">
+                <StackLayout Padding="30,0" Spacing="20">
+                    <Label FontSize="Caption"
+                           Text="Lancez votre expérience sur MyCTAMA ! "
+                           TextColor="#2D2D2D"
+                           HorizontalOptions="Center" />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="&#xf007;"
+                               FontFamily="FontAwesome"
+                               FontSize="20"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Grid.Column="0"
+                               TextColor="#1c4992"/>
+                        <Entry x:Name="UsernameEntry"
+                               Placeholder="Username"
+                               Margin="10,0"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center"
+                               Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="&#xf003;"
+                               FontFamily="FontAwesome"
+                               FontSize="20"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Grid.Column="0"
+                               TextColor="#1c4992"/>
+                        <Entry x:Name="EmailEntry"
+                               Placeholder="Email"
+                               Keyboard="Email"
+                               Margin="10,0"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center"
+                               Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="&#xf023;"  
+                               FontFamily="FontAwesome"
+                               FontSize="18"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Grid.Column="0"
+                               TextColor="#1c4992"
+                               Margin="10,0,0,0"/>
+                        <Grid Grid.Column="1"
+HorizontalOptions="FillAndExpand"
+VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Password Entry filling the entire grid -->
+                            <Entry x:Name="PasswordEntry"
+                                 Grid.Column="0"
+                                 Placeholder="Mot de passe"
+                                 IsPassword="True"
+                                 Margin="10,0"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center"/>
+
+                            <!-- Eye icon inside the entry -->
+                            <Label x:Name="ShowPasswordIcon"
+                                 Grid.Column="0"
+                                 Text="&#xf06e;"
+                                 FontFamily="FontAwesome"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 Margin="0,10,10,0" 
+                          TextColor="Black">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnShowPasswordIconTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="&#xf023;"
+                               FontFamily="FontAwesome"
+                               FontSize="20"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Grid.Column="0"
+                               TextColor="#1c4992"/>
+                        <Entry x:Name="ConfirmPasswordEntry"
+                               Placeholder="Confirm Password"
+                               IsPassword="True"
+                               Margin="10,0"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center"
+                               Grid.Column="1"/>
+                    </Grid>
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                        <Label Text="&#xf00c;" 
+                            FontFamily="FontAwesome"
+                               FontSize="20"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                            <Button x:Name="CreateButton"
+                                Text="Créer"
+                                BackgroundColor="#1c4992"
+                                TextColor="White"
+                                Clicked="OnCreateAccountButtonClicked"
+                                HeightRequest="50"
+                                WidthRequest="170"
+                                CornerRadius="25"/>
+                    </StackLayout>
+                    <!-- Success Tick Icon -->
+                    <Label x:Name="SuccessTickIcon"
+                        Text="&#xf00c;"  
+                        FontFamily="FontAwesome"
+                       FontSize="20"
+                       TextColor="Green"
+                       IsVisible="False"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                        <Label HorizontalOptions="Center"
+                           TextColor="#1c4992"
+                           HeightRequest="60"
+                           FontSize="16"
+                           LineBreakMode="TailTruncation">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontFamily="FontAwesome"
+                                      Text="&#xf2f6;" 
+                                      FontSize="16"
+                                      TextColor="#1c4992"/>
+                                <Span Text=" Vous avez déjà un compte?"
+                                      FontSize="16"
+                                      TextColor="#1c4992"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnLoginTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

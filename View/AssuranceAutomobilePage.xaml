@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.View.Details.AssuranceAutomobilePage"
+             Title="Assurance Automobile">
+
+    <Grid>
+        <!-- Define row heights for top and bottom sections -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <!-- Top section with background image -->
+        <AbsoluteLayout Grid.Row="0">
+            <Image Source="bck4.png"
+                   Aspect="AspectFill"
+                   Opacity="0.4"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+                   AbsoluteLayout.LayoutFlags="All" />
+
+            <!-- Title and logo in the top section -->
+            <StackLayout VerticalOptions="Start"
+                        HorizontalOptions="Center"
+                        Padding="10"
+                        AbsoluteLayout.LayoutBounds="0.5,0.3,0.8,0.5"
+                        AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="ctama_logo.png" HeightRequest="60"/>
+                    <Label Text="DEVIS AUTOMOBILE" 
+                           FontSize="24"
+                           TextColor="DarkOrange"
+                           VerticalOptions="Center"
+                           Margin="10,0"/>
+
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+
+        <!-- Content section -->
+        <ScrollView Grid.Row="1" Padding="20" BackgroundColor="#f0f0f0">
+            <!-- Set ScrollView background color -->
+            <StackLayout Spacing="15" BackgroundColor="#f0f0f0" Padding="10">
+                <!-- Set StackLayout background color and padding -->
+                <!-- Informations personnelles -->
+                <Label Text="Informations personnelles" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Entry Placeholder="Nom complet" BackgroundColor="White"/>
+                        <Entry Placeholder="Adresse" BackgroundColor="White"/>
+                        <Entry Placeholder="Ville" BackgroundColor="White"/>
+                        <Entry Placeholder="Code postal" BackgroundColor="White"/>
+                        <Entry Placeholder="Téléphone" Keyboard="Telephone" BackgroundColor="White"/>
+                        <Entry Placeholder="Adresse e-mail" Keyboard="Email" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Informations sur le véhicule -->
+                <Label Text="Informations sur le véhicule" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Grid>
+                            <Picker x:Name="CarBrandPicker" SelectedIndexChanged="OnCarBrandPickerSelectedIndexChanged" BackgroundColor="White">
+                                <!-- Les items seront ajoutés dans le code-behind -->
+                            </Picker>
+                            <Label x:Name="CarBrandPlaceholder" Text="Sélectionnez une marque" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Start" 
+                           Padding="10,0" 
+                           TextColor="Gray"
+                           IsVisible="True"
+                           IsEnabled="False" />
+                        </Grid>
+                        <Grid>
+                            <Picker x:Name="CarModelPicker" BackgroundColor="White">
+                                <!-- Les items seront ajoutés dans le code-behind -->
+                            </Picker>
+                            <Label x:Name="CarModelPlaceholder" Text="Sélectionnez un modèle" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Start" 
+                           Padding="10,0" 
+                           TextColor="Gray"
+                           IsVisible="True"
+                           IsEnabled="False" />
+                        </Grid>
+                        <Entry Placeholder="Année première circulation" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Numéro d'immatriculation du véhicule" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Type de couverture souhaité -->
+                <Label Text="Type de couverture souhaité" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Picker Title="Sélectionnez le type de couverture" BackgroundColor="White">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Responsabilité civile</x:String>
+                                    <x:String>Tous risques</x:String>
+                                    <x:String>Autre (préciser)</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <Entry Placeholder="Type de couverture spécifique" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+
+                <!-- Utilisation du véhicule -->
+                <Label Text="Utilisation du véhicule" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Picker Title="Sélectionnez l'utilisation du véhicule" BackgroundColor="White">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Usage personnel</x:String>
+                                    <x:String>Usage professionnel</x:String>
+                                    <x:String>Autre (préciser)</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <Entry Placeholder="Détails sur l'utilisation" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+
+                <!-- Antécédents de conduite -->
+                <Label Text="Antécédents de conduite" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <StackLayout Spacing="15">
+                        <Entry Placeholder="Nombre d'années de permis" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Nombre d'accidents sur les 5 dernières années" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Nombre de sinistres sur les 5 dernières années" Keyboard="Numeric" BackgroundColor="White"/>
+                        <Entry Placeholder="Informations supplémentaires sur votre historique de conduite" BackgroundColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Remarques supplémentaires -->
+                <Label Text="Remarques supplémentaires" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame BackgroundColor="White" Padding="10" CornerRadius="5">
+                    <Editor Placeholder="Espace pour toute information supplémentaire que vous souhaitez partager" HeightRequest="100" BackgroundColor="White"/>
+                </Frame>
+
+                <!-- Submit Button -->
+                <Button Text="Soumettre la demande" HorizontalOptions="FillAndExpand" 
+                VerticalOptions="CenterAndExpand" Margin="0,20,0,0"
+                BackgroundColor="#1c4992"/>
+            </StackLayout>
+        </ScrollView>
+
+
+        <!-- Footer with buttons -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     Spacing="10" 
+                     Padding="0,20,0,0"
+                     Grid.Row="2" 
+                     VerticalOptions="End" >
+            <!-- Home Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf015;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHomeButtonClicked" />
+
+            <!-- Contact Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf095;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnContactButtonClicked" />
+
+            <!-- Help Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf05a;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHelpButtonClicked" />
+
+            <!-- Map Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf279;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMapButtonClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

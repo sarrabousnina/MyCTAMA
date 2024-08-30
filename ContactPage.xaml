@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.ContactPage"
+             BackgroundColor="#f0f0f5">
+
+    <Grid>
+        <!-- Layout with two sections -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <!-- Top section with background image -->
+        <AbsoluteLayout Grid.Row="0">
+            <Image Source="bck4.png"
+                   Aspect="AspectFill"
+                   Opacity="0.4"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+                   AbsoluteLayout.LayoutFlags="All" />
+
+            <!-- Title in the top section -->
+            <StackLayout VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Padding="10"
+                        AbsoluteLayout.LayoutBounds="0.5,0.5,0.8,0.5"
+                        AbsoluteLayout.LayoutFlags="All">
+                <Label Text="Contactez-nous"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="#ee6539"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </StackLayout>
+        </AbsoluteLayout>
+
+        <!-- Contact form section -->
+        <ScrollView Grid.Row="1" Padding="20" BackgroundColor="#f0f0f0">
+            <StackLayout Spacing="15">
+                <!-- Contact Us Header -->
+                <Label Text="Veuillez remplir le formulaire ci-dessous, notre service client vous répondra dans les plus brefs délais."
+                       FontSize="Caption"
+                       TextColor="#ee6539"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" />
+
+                <!-- Name Entry -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Entry x:Name="NomEntry"
+                           Placeholder="Votre Nom *"
+                           Keyboard="Default"
+                           BackgroundColor="Transparent"
+                           TextColor="#000000" />
+                </Frame>
+                <Label x:Name="NomErrorLabel"
+                       Text="Ce champ est requis."
+                       TextColor="Red"
+                       IsVisible="False"
+                       FontSize="14"
+                       Margin="5,0,0,0"/>
+
+                <!-- First Name Entry -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Entry x:Name="PrenomEntry"
+                           Placeholder="Votre prénom *"
+                           Keyboard="Default"
+                           BackgroundColor="Transparent"
+                           TextColor="#000000" />
+                </Frame>
+                <Label x:Name="PrenomErrorLabel"
+                       Text="Ce champ est requis."
+                       TextColor="Red"
+                       IsVisible="False"
+                       FontSize="14"
+                       Margin="5,0,0,0"/>
+
+                <!-- Email Entry -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Entry x:Name="EmailEntry"
+                           Placeholder="Votre email *"
+                           Keyboard="Email"
+                           BackgroundColor="Transparent"
+                           TextColor="#000000" />
+                </Frame>
+                <Label x:Name="EmailErrorLabel"
+                       Text="Ce champ est requis."
+                       TextColor="Red"
+                       IsVisible="False"
+                       FontSize="14"
+                       Margin="5,0,0,0"/>
+
+                <!-- Phone Entry -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Entry x:Name="PhoneEntry"
+                           Placeholder="Votre téléphone *"
+                           Keyboard="Telephone"
+                           BackgroundColor="Transparent"
+                           TextColor="#000000" />
+                </Frame>
+                <Label x:Name="PhoneErrorLabel"
+                       Text="Ce champ est requis."
+                       TextColor="Red"
+                       IsVisible="False"
+                       FontSize="14"
+                       Margin="5,0,0,0"/>
+
+                <!-- Company Entry -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Entry x:Name="EntrepriseEntry"
+                           Placeholder="Entreprise"
+                           Keyboard="Default"
+                           BackgroundColor="Transparent"
+                           TextColor="#000000" />
+                </Frame>
+
+                <!-- Department Picker -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Picker x:Name="DepartementPicker"
+                            Title="Département"
+                            BackgroundColor="Transparent"
+                            TextColor="#000000">
+                        <Picker.Items>
+                            <x:String>Automobile</x:String>
+                            <x:String>Agricole</x:String>
+                            <x:String>Divers</x:String>
+                            <x:String>Vie</x:String>
+                            <x:String>Marketing</x:String>
+                            <x:String>RH</x:String>
+                            <x:String>Sinistre</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+
+                <!-- Subject Entry -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Entry x:Name="ObjetEntry"
+                           Placeholder="Objet *"
+                           Keyboard="Default"
+                           BackgroundColor="Transparent"
+                           TextColor="#000000" />
+                </Frame>
+                <Label x:Name="ObjetErrorLabel"
+                       Text="Ce champ est requis."
+                       TextColor="Red"
+                       IsVisible="False"
+                       FontSize="14"
+                       Margin="5,0,0,0"/>
+
+                <!-- Message Editor -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True" Margin="0,5,0,0">
+                    <Editor x:Name="MessageEditor"
+                            Placeholder="Message *"
+                            BackgroundColor="Transparent"
+                            TextColor="#000000"
+                            HeightRequest="100" />
+                </Frame>
+                <Label x:Name="MessageErrorLabel"
+                       Text="Ce champ est requis."
+                       TextColor="Red"
+                       IsVisible="False"
+                       FontSize="14"
+                       Margin="5,0,0,0"/>
+
+                <!-- Submit Button -->
+                <Button Text="Envoyer"
+                        BackgroundColor="#1c4992"
+                        TextColor="White"
+                        CornerRadius="20"
+                        Margin="0,20,0,0"
+                        Clicked="OnSubmitButtonClicked" />
+
+                <!-- Result Label -->
+                <Label x:Name="ResultLabel"
+                       Text=""
+                       TextColor="Green"
+                       IsVisible="False"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Margin="0,10,0,0" />
+
+                <!-- Contact Information Section -->
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="15" HasShadow="True" Margin="0,30,0,0">
+                    <Frame.Shadow>
+                        <Shadow Offset="5,5" Radius="10" Opacity="0.5"/>
+                    </Frame.Shadow>
+
+                    <StackLayout Spacing="15">
+                        <Label Text="Informations de contact"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#ee6539"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Start" />
+
+                        <!-- Siège -->
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label FontFamily="FontAwesome" Text="&#xf19c;" FontSize="18" TextColor="#1c4992" VerticalOptions="Center" />
+                            <Label Text="Siège"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <!-- Address -->
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label FontFamily="FontAwesome" Text="&#xf3c5;" FontSize="18" TextColor="#1c4992" VerticalOptions="Center" />
+                            <Label Text="Adresse : 100 avenue de la liberté 1002 - Tunis"
+                                   FontSize="16"
+                                   TextColor="Black"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <!-- Postal Code -->
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label FontFamily="FontAwesome" Text="&#xf1ad;" FontSize="18" TextColor="#1c4992" VerticalOptions="Center" />
+                            <Label Text="Code Postal : 1069"
+                                   FontSize="16"
+                                   TextColor="Black"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <!-- Phone -->
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label FontFamily="FontAwesome" Text="&#xf095;" FontSize="18" TextColor="#1c4992" VerticalOptions="Center" />
+                            <Label Text="Tél : 70 55 68 00"
+                                   FontSize="16"
+                                   TextColor="Black"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <!-- Fax -->
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label FontFamily="FontAwesome" Text="&#xf1ac;" FontSize="18" TextColor="#1c4992" VerticalOptions="Center" />
+                            <Label Text="Fax : 71 78 41 49"
+                                   FontSize="16"
+                                   TextColor="Black"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Footer with buttons -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     Spacing="10" 
+                     Padding="0,10,0,0"
+                     Grid.Row="2" 
+                     VerticalOptions="End">
+            <!-- Home Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf015;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHomeButtonClicked" />
+
+            <!-- Contact Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf095;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnContactButtonClicked" />
+
+            <!-- Help Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf05a;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHelpButtonClicked" />
+
+            <!-- Map Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf279;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMapButtonClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

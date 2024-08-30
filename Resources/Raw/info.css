@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+/* Reset styles for body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* General Styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Full Width Video Background Section */
+#video-background {
+    position: fixed; /* Fixed positioning to keep it in place */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    z-index: -1; /* Place it behind other content */
+}
+
+#infovid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container */
+}
+
+/* Full Width Video Background Section */
+#video-background {
+    position: fixed; /* Fixed positioning to keep it in place */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    z-index: -1; /* Place it behind other content */
+    display: flex; /* Flexbox to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+/* Video Element */
+#infovid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container */
+}
+
+/* Semi-transparent White Overlay */
+#video-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white overlay */
+    z-index: 1; /* Ensure it appears above the video but below other content */
+}
+
+/* Content Overlay */
+.content-overlay {
+    position: relative; /* Relative positioning to overlay content */
+    width: 80%; /* Adjust width as needed */
+    max-width: 1200px; /* Maximum width for large screens */
+    height: auto; /* Adjust height based on content */
+    margin: 20px auto; /* Center horizontally with margin */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensure padding does not affect width */
+    text-align: center; /* Center text */
+    position: relative; /* Ensure it stays on top of the video */
+}
+
+/* Main Container */
+main {
+    position: relative; /* Ensure main content is positioned correctly */
+    width: 80%; /* Center the content */
+    max-width: 1200px; /* Maximum width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px; /* Padding around the content */
+    z-index: 1; /* Ensure content appears above the video */
+    box-sizing: border-box; /* Ensure padding does not affect width */
+}
+
+
+/* Frames */
+.frame {
+    background-color: #ffffff; /* Background color for the frame */
+    border: 2px solid #ffffff; /* Remove the orange border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside the frame */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the frame */
+    margin: 20px auto; /* Margin around the frame */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    width: 100%; /* Full width to match container */
+    max-width: 1200px; /* Consistent max-width */
+}
+
+/* Ensure heading and paragraph sizes are adjusted for fitting in the frame */
+.frame h2 {
+    font-size: 1.5em; /* Smaller heading size */
+    margin-bottom: 15px;
+    color: #1C4992; /* Update to blue color for headings */
+    border-bottom: 2px solid #1C4992; /* Blue underline for headings */
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.frame p {
+    font-size: 0.9em; /* Smaller text size */
+    line-height: 1.5em; /* Adjust line height */
+    color: #34435E; /* Dark text color */
+    margin: 10px 0; /* Margin around paragraphs */
+}
+
+/* Dates Clés Frame */
+#dates-cles {
+    background-color: #ffffff; /* Background color for the Dates Clés section */
+    padding: 60px 20px; /* Increase top and bottom padding for more height */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    margin-top: 20px; /* Space above the section */
+    max-width: 80%; /* Adjust width to be narrower */
+    margin: 20px auto; /* Center the section horizontally */
+    border: 2px solid red; /* Temporary border to visualize the section */
+}
+/* Section Styling */
+section {
+    margin-bottom: 20px;
+}
+i {
+    color: #1C4992; /* Blue color for icons */
+}
+
+/* Headings */
+h2 {
+    color: #1C4992; /* Update to blue color for headings */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ee6539; /* Blue underline for headings */
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+h2 i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Timeline Container */
+#timeline {
+    position: relative; /* Ensure correct positioning */
+    padding-top: 40px; /* Add padding to make space for the button */
+}
+
+/* Timeline Item Styling */
+#timeline p {
+    font-size: 1em;
+    line-height: 1.75em;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    color: #34435E; /* Dark text color */
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-image: linear-gradient(to right, #ee6539, #1C4992);
+    border-image-slice: 1;
+    border-width: 5px;
+    counter-increment: section;
+}
+
+/* Adjusting positions of the timeline dates */
+#timeline p:before {
+    content: attr(data-date); /* Display the date instead of numbers */
+    position: absolute;
+    border-radius: 50%;
+    padding: 10px;
+    height: 2.5em; /* Adjust size for better display of dates */
+    width: 2.5em;
+    text-align: center;
+    line-height: 2.5em; /* Center text vertically */
+    color: #ffffff; /* White color for text */
+    font-size: 0.9em; /* Adjust font size for dates */
+    background-color: #ee6539; /* Orange color for circles */
+    transform: translateY(-25%); /* Move circles up by half of the previous translation */
+}
+
+/* Alternating positions for circles */
+#timeline p:nth-child(odd):before {
+    left: -3em; /* Move dates further left */
+    background-color: #ee6539; /* Orange color for circles */
+}
+
+#timeline p:nth-child(even):before {
+    right: -3em; /* Move dates further right */
+    background-color: #1C4992; /* Blue color for circles */
+}
+
+/* Ensure text alignment and padding adjustments */
+#timeline p:nth-child(odd) {
+    border-left: 5px solid transparent;
+    border-right: none;
+    padding-left: 4em; /* Space for the date on the left */
+    padding-right: 0;
+}
+
+#timeline p:nth-child(even) {
+    border-right: 5px solid transparent;
+    border-left: none;
+    padding-left: 0;
+    padding-right: 4em; /* Space for the date on the right */
+}
+
+#timeline p:first-child {
+    border-top: none;
+}
+
+#timeline p:last-child {
+    border-bottom: none;
+}
+
+/* Small Button Styling */
+#small-button {
+    position: absolute;
+    top: 0; /* Adjust as needed */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center button */
+    width: 20px; /* Small width */
+    height: 20px; /* Small height */
+    border-radius: 50%; /* Round button */
+    background-color: #1C4992; /* Blue color for the button */
+    color: #ffffff; /* White color for button text */
+    text-align: center;
+    line-height: 20px; /* Center text vertically */
+    font-size: 0.8em; /* Small text size */
+    border: none; /* Remove border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for the button */
+    z-index: 2; /* Ensure it appears above the video */
+}
+
+
+/* List Styling for Members */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #ffffff;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    color: #34435E; /* Dark text color */
+}
+
+ul li:nth-child(odd) {
+    background-color: #f9f9f9; /* Alternate background color for better readability */
+}
+
+ul li strong {
+    color: #1C4992; /* Update to blue color for highlighted names */
+}
+
+ul li i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Footer Styling */
+#footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 2px solid #1C4992; /* Blue color for footer border */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    position: relative; /* Ensure footer is positioned correctly */
+    width: 100%; /* Full width for footer */
+}
+
+#footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #34435E; /* Dark text color */
+}
+
+#footer i {
+    color: #1C4992; /* Blue color for icons */
+    margin-right: 5px;
+}
+
+/* Slide-In Animation */
+.slide-in {
+    transform: translateX(-100%);
+    transition: transform 1s ease-in-out;
+}
+
+.slide-in.visible {
+    transform: translateX(0);
+}

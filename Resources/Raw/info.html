@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTAMA Information</title>
+    <link rel="stylesheet" href="info.css">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <main>
+        <section id="video-background">
+            <video autoplay muted loop id="infovid">
+                <source src="C:\Users\user\Desktop\MauiApp2-master\Resources\Raw\vidbck1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        <section class="frame slide-in">
+                <h2><i class="fas fa-info-circle"></i> Présentation de la CTAMA</h2>
+                <p>La Caisse Tunisienne d’Assurances Mutuelles Agricoles (CTAMA) est une Société à Forme Mutuelle régie par le décret N° 92-2257 du 31 Décembre 1992. Elle est le doyen des sociétés d’assurance en Tunisie.</p>
+                <p>Créée en 1912 sous forme d’une Caisse Mutuelle Agricole pour couvrir les risques grêles et mortalité de bétail.</p>
+            </section>
+        
+            <section class="frame slide-in" id="timeline">
+                <h2><i class="fas fa-calendar-alt"></i> LES DATES CLÉS DE LA CTAMA</h2>
+                <p data-date="1912"><i class="fas fa-tractor"></i> La constitution de la Caisse Mutuelle Agricole spécialisée en assurance grêle et mortalité de bétail.</p>
+                <p data-date="1931"><i class="fas fa-scroll"></i> 26 mars : Publication du décret régissant les Caisses Mutuelles d’Assurances Agricoles ainsi que leur gestion.</p>
+                <p data-date="1961"><i class="fas fa-flag"></i> 28 avril : La Tunisification et la constitution de la Caisse Tunisienne d’Assurances Mutuelles Agricoles (CTAMA).</p>
+                <p data-date="2008"><i class="fas fa-cogs"></i> 21 février : Tenu de l’Assemblée Générale Extraordinaire de la CTAMA qui a décidé la modification de sa forme juridique en une Société à Forme Mutuelle régie par le décret du 31 Décembre 1992.</p>
+                <p data-date="2009"><i class="fas fa-check-circle"></i> 08 janvier : Obtention de l'agrément du ministère de finance de la CTAMA sous sa nouvelle forme en tant que société d’assurances à forme mutuelle.</p>
+                <p data-date="2014"><i class="fas fa-users"></i> Fusion de la Mutuelle Générale d’Assurance avec la Caisse Tunisienne d’Assurances Mutuelles Agricoles.</p>
+            </section>
+            
+        
+
+        <section class="frame slide-in">
+            <h2><i class="fas fa-user-tie"></i> Le Président du conseil</h2>
+            <p><strong>Monsieur NAJI HANNACHI</strong></p>
+        </section>
+
+        <section class="frame slide-in">
+            <h2><i class="fas fa-user-tie"></i> Directeur général</h2>
+            <p><strong>Monsieur LAMJED BOUKHRIS</strong></p>
+        </section>
+
+        <section class="frame slide-in">
+            <h2><i class="fas fa-file-alt"></i> Commissaires aux comptes</h2>
+            <p><strong>Cabinet HLB Audi&Advisory</strong></p>
+            <p><strong>Cabinet CMC-DFK international</strong></p>
+        </section>
+
+        <section class="frame slide-in">
+            <h2><i class="fas fa-users"></i> Les membres du conseil d'Administration</h2>
+            <ul>
+                <li><i class="fas fa-user"></i> <strong>BNA représenté par Monsieur ZBISS ADNEN</strong></li>
+                <li><i class="fas fa-user"></i> <strong>OTD représenté par Monsieur OMAR HELAL</strong></li>
+                <li><i class="fas fa-user"></i> <strong>ONH représenté par Monsieur FAYCEL TLILI</strong></li>
+                <li><i class="fas fa-user"></i> FREDJ GUENDOUZ</li>
+                <li><i class="fas fa-user"></i> TAREK MAZIGH</li>
+                <li><i class="fas fa-user"></i> SALAH JANDOUBI</li>
+                <li><i class="fas fa-user"></i> HICHAM CHRAIEF</li>
+                <li><i class="fas fa-user"></i> MONCEF TLILI</li>
+                <li><i class="fas fa-user"></i> ALI RADHOUANI</li>
+                <li><i class="fas fa-user"></i> RIADH BORGINI</li>
+                <li><i class="fas fa-user"></i> MOHAMED RIADH BEN ZID</li>
+            </ul>
+        </section>
+
+        <div id="footer">
+            <p>&copy; 2024 Assurances CTAMA</p>
+            <p>100 avenue de la liberté 1002 - Tunis</p>
+            <p><i class="fas fa-phone"></i> Tél : (+216) 70 55 68 00 / <i class="fas fa-fax"></i> Fax : (+216) 71 78 41 49</p>
+        </div>
+    </main>
+    <script>
+        function onScroll() {
+            var elements = document.querySelectorAll('.slide-in');
+            var viewportHeight = window.innerHeight;
+            elements.forEach(function (element) {
+                var elementTop = element.getBoundingClientRect().top;
+                var elementBottom = element.getBoundingClientRect().bottom;
+                if (elementTop < viewportHeight && elementBottom >= 0) {
+                    element.classList.add('visible');
+                } else {
+                    element.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', onScroll);
+        document.addEventListener('DOMContentLoaded', onScroll);
+    </script>
+</body>
+</html>

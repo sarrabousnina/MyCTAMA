@@ -1,0 +1,70 @@
+/* Hide scrollbars */
+body {
+    overflow: hidden; /* Hides all scrollbars */
+}
+
+/* Styling for the button */
+.button {
+    overflow: hidden; /* Hides any scrollbars within the button */
+    width: 160px; /* Smaller width */
+    height: 40px; /* Smaller height */
+    background: #1c4992; /* Blue color */
+    border-radius: 6px;
+    transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Ensure proper positioning of the circle */
+    font-size: 1.2em; /* Adjust font size for the text */
+    color: white;
+    text-align: center;
+    cursor: pointer; /* Pointer cursor for button */
+    overflow: hidden; /* Ensure no overflow */
+}
+
+/* Circle animation */
+.button__circle {
+    width: 30px; /* Smaller size of the green circle */
+    height: 30px; /* Smaller size of the green circle */
+    background: mediumseagreen;
+    border-radius: 50%;
+    position: absolute; /* Position the circle absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the circle's center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+    opacity: 0; /* Start hidden */
+}
+
+/* Button hover effect */
+.button:hover .button__circle {
+    opacity: 0; /* Hide the circle on hover */
+}
+
+/* Tick mark styling */
+.tick {
+    color: white;
+    font-size: 1em; /* Adjust font size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity .3s; /* Smooth transition for tick appearance */
+}
+
+    .tick svg {
+        width: 16px; /* Width of the SVG */
+        height: 16px; /* Height of the SVG */
+    }
+
+/* Active state with green tick */
+.button.active .tick {
+    opacity: 1; /* Show tick mark */
+}
+
+.button.active .button__circle {
+    opacity: 1; /* Ensure the circle is visible */
+}

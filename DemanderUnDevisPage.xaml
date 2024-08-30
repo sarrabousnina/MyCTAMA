@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.DemanderUnDevisPage"
+             Title="Demander un devis">
+    <StackLayout Padding="20" Spacing="10">
+        
+        <Button Text="Assurance Automobile" 
+                Clicked="OnAssuranceAutomobileClicked" 
+                HorizontalOptions="Fill" 
+                Margin="0.40" >
+
+        </Button>
+
+        <Button Text="Agricutures" 
+                Clicked="OnAgriculteursClicked" 
+                HorizontalOptions="Fill" 
+                Margin="0.40" />
+        
+        <Button Text="Assurance MultiRisques Habitation" 
+                Clicked="OnAssuranceMultirisquesHabitationClicked" 
+                HorizontalOptions="Fill" 
+                Margin="0.40" />
+
+        <Button Text="AssuranceVie" 
+                Clicked="OnAssuranceVieClicked" 
+                HorizontalOptions="Fill" 
+                Margin="0.40" />
+
+    </StackLayout>
+</ContentPage>

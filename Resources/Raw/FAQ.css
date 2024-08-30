@@ -1,0 +1,291 @@
+:root {
+    --size-header: 2.25rem;
+    --size-accordion-title: 1.25rem;
+    --size-accordion-content: 1rem;
+    --animation-speed: 100;
+    --slide-ease: cubic-bezier(0.86, 0, 0.07, 1);
+    --slide-duration: calc(400ms * 100 / var(--animation-speed));
+    --slide-delay: calc(450ms * 100 / var(--animation-speed));
+    --circle-duration: calc(900ms * 100 / var(--animation-speed));
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1rem;
+}
+
+body {
+    background-color: hsl(0, 17%, 98%);
+    font-family: 'Nunito', Arial, Helvetica, sans-serif; /* Modern font */
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 2rem;
+    color: #333; /* Dark text color for better readability */
+    line-height: 1.6; /* Increased line height for readability */
+}
+
+/* Container for content */
+.container {
+    max-width: 1200px; /* Limiting maximum width for large screens */
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #fff; /* White background for content */
+    border-radius: 8px; /* Rounded corners */
+    padding: 2rem; /* Padding inside container */
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+h1 {
+    font-family: 'Merriweather', serif; /* Elegant serif font for headers */
+    font-weight: 700;
+    font-size: 2.5rem; /* Larger font size for emphasis */
+    color: #2c3e50; /* Darker color for contrast */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 0.1em; /* Spacing between letters */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Pronounced shadow */
+    margin-bottom: 1.5rem; /* Space below header */
+}
+
+main {
+    position: relative;
+    z-index: 2;
+    text-align: center; /* Center content within main */
+}
+
+/* Fullscreen Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    animation: video-playback 80s linear infinite; /* Adjust duration for slower speed */
+}
+
+/* Keyframes for video playback */
+@keyframes video-playback {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.05); /* Slight scale for slow motion effect */
+    }
+}
+
+/* White Overlay */
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Adjust opacity here for less overlay */
+    z-index: 1;
+}
+
+/* Accordion Styling */
+.accordion {
+    --circle-x: 1.8rem;
+    --circle-y: 0;
+    --circle-r: 200%;
+    --circle-bg: #1c4992;
+    color: #fff;
+    background-color: var(--circle-bg);
+    max-width: 56ch;
+    margin-bottom: 1rem;
+    border-radius: min(8px, 0.5rem);
+    display: grid;
+    grid-template-rows: 0fr 0fr;
+    transition-timing-function: var(--slide-ease);
+    transition-duration: 200ms, 200ms, var(--slide-duration);
+    transition-property: opacity, box-shadow, grid-template-rows;
+    transition-delay: 0ms, 0ms, var(--slide-delay);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+    overflow: hidden; /* Prevent internal scrolling */
+}
+
+.accordion:not(:target):hover {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.accordion:not(:target):active {
+    opacity: 1;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.3);
+}
+
+.accordion,
+.content {
+    overflow: hidden;
+    z-index: 2;
+}
+
+.accordion:target {
+    grid-template-rows: 0fr 1fr;
+    transition: grid-template-rows var(--slide-ease) var(--slide-duration) var(--slide-delay);
+}
+
+.wrapper {
+    padding-block: 0 1.05rem;
+    padding-inline: 1.25rem;
+}
+
+.content {
+    font-size: var(--size-accordion-content);
+    line-height: 140%;
+}
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+.content a {
+    color: currentColor;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+main :last-child,
+.content :last-child {
+    margin-bottom: 0;
+}
+
+.title a {
+    padding: 1rem 1.25rem;
+    font-size: var(--size-accordion-title);
+    font-weight: 800;
+    color: currentColor;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    z-index: 2;
+}
+
+.title a::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    margin-right: 0.75rem;
+    display: inline-block;
+    transform: rotate(0);
+    transition: transform var(--slide-ease) var(--slide-duration) var(--slide-delay);
+    background-color: currentColor;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    z-index: 2;
+}
+
+/* Accordion Styling */
+.accordion {
+    --circle-x: 1.8rem;
+    --circle-y: 0;
+    --circle-r: 200%;
+    --circle-bg: #1c4992; /* Blue background */
+    color: #fff;
+    background-color: var(--circle-bg);
+    max-width: 56ch;
+    margin-bottom: 1rem;
+    border-radius: min(8px, 0.5rem);
+    display: grid;
+    grid-template-rows: 0fr 0fr;
+    transition-timing-function: var(--slide-ease);
+    transition-duration: 200ms, 200ms, var(--slide-duration);
+    transition-property: opacity, box-shadow, grid-template-rows;
+    transition-delay: 0ms, 0ms, var(--slide-delay);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+    overflow: hidden; /* Prevent internal scrolling */
+    position: relative; /* Ensure z-index works */
+}
+
+.accordion:not(:target):hover {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.accordion:not(:target):active {
+    opacity: 1;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.3);
+}
+
+.accordion:target {
+    grid-template-rows: 0fr 1fr;
+    transition: grid-template-rows var(--slide-ease) var(--slide-duration) var(--slide-delay);
+}
+
+/* Adjust pseudo-elements for accordion background effect */
+.accordion::before,
+.accordion::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(238, 102, 57, 0.911); /* Orange background for active state */
+    mix-blend-mode: normal;
+    transform-style: preserve-3d;
+    transition-timing-function: ease;
+    transition-property: opacity, clip-path, visibility;
+    pointer-events: none;
+    clip-path: circle(var(--r) at var(--circle-x) var(--circle-y));
+    border-radius: inherit;
+}
+
+/* Orange background effect when active */
+.accordion::before {
+    --r: 0%;
+    transition-delay: var(--circle-duration), var(--circle-duration), 0ms;
+    transition-duration: 0ms, var(--circle-duration), 0ms;
+    opacity: 0;
+    z-index: 1; /* Positioned below text but above background */
+}
+
+.accordion:target::before {
+    --r: var(--circle-r);
+    transition-delay: 0ms, 0ms, 0ms;
+    transition-duration: 0ms, var(--circle-duration), 0ms;
+    opacity: 1;
+}
+
+/* Blue background effect when inactive */
+.accordion::after {
+    --r: var(--circle-r);
+    transition-delay: 0ms, 0ms, var(--circle-duration);
+    transition-duration: 0ms, var(--circle-duration), 0ms;
+    visibility: hidden;
+    opacity: 1;
+    z-index: 0; /* Positioned below everything else */
+}
+
+.accordion:target::after {
+    --r: 0%;
+    transition-delay: 0ms, 0ms, 0ms;
+    transition-duration: 0ms, 0ms, 0ms;
+    visibility: visible;
+    opacity: 0;
+}

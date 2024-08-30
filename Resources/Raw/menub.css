@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent; /* Keep the background transparent */
+    overflow: hidden; /* Prevent scroll bars on body */
+}
+
+.menu-btn {
+    position: fixed;
+    z-index: 1000; /* Ensure it's above other content */
+    right: 20px;
+    top: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    background: #000;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-btn i {
+    font-size: 24px;
+    color: white;
+}
+
+.menu-btn:hover {
+    background-color: #333;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    clip-path: circle(0px at calc(100% - 30px) 30px); /* Start as a tiny circle */
+    transition: clip-path 0.3s ease-in-out;
+    z-index: 999; /* Ensure it's below the menu button */
+    pointer-events: none; /* Allow clicks through the wrapper initially */
+}
+
+#active:checked ~ .wrapper {
+    clip-path: circle(150% at calc(100% - 30px) 30px); /* Expand the circle to cover the page */
+    pointer-events: auto; /* Enable clicks on the wrapper when active */
+}
+
+.wrapper ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    opacity: 0; /* Start with the menu items hidden */
+    transition: opacity 0.3s ease;
+}
+
+#active:checked ~ .wrapper ul {
+    opacity: 1; /* Show the menu items when active */
+}
+
+.wrapper ul li {
+    margin: 15px 0;
+}
+
+.wrapper ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    border-radius: 50px;
+    background: #000;
+    position: relative;
+    line-height: 50px;
+    transition: all 0.3s ease;
+}
+
+.wrapper ul li a:after {
+    position: absolute;
+    content: "";
+    background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+    width: 104%;
+    height: 110%;
+    left: -2%;
+    top: -5%;
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    animation: rotate 1.5s linear infinite;
+    transition: transform 0.3s ease;
+}
+
+.wrapper ul li a:hover:after {
+    transform: scaleY(1);
+}
+
+.wrapper ul li a:hover {
+    color: #fff;
+}
+
+@keyframes rotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}

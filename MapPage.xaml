@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MapPage">
+    <Grid>
+        <WebView x:Name="webView" 
+                 VerticalOptions="FillAndExpand" 
+                 HorizontalOptions="FillAndExpand" />
+
+        <!-- StackLayout with FontAwesome Icons -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     Spacing="10" 
+                     Padding="0,20,0,0"
+                     VerticalOptions="End">
+            <!-- Home Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf015;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHomeButtonClicked" />
+
+            <!-- Contact Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf095;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnContactButtonClicked" />
+
+            <!-- Help Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf05a;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHelpButtonClicked" />
+
+            <!-- Map Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf279;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMapButtonClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .animated-image {
+            position: absolute;
+            width: 200px; /* Adjust width as needed */
+            height: 200px; /* Adjust height as needed */
+            background-image: url('imgct.png'); /* Path to your image */
+            background-size: cover;
+            background-position: center;
+            animation: moveImage 3s linear forwards;
+        }
+
+        @keyframes moveImage {
+            0% {
+                transform: translateX(100vw); /* Start from right side */
+            }
+
+            50% {
+                transform: translateX(calc(-50% + 100px)); /* Move to the center */
+            }
+
+            100% {
+                transform: translateX(-100vw); /* Move to the left and disappear */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="animated-image"></div>
+    </div>
+</body>
+</html>

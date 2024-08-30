@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.FAQPage"
+             Title="FAQ"
+             BackgroundColor="#fff">
+
+    <Grid>
+        <!-- Layout with two sections and a footer -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <!-- Top section with background image -->
+            <RowDefinition Height="0.8*" />
+            <!-- Main content area -->
+            <RowDefinition Height="60" />
+            <!-- Footer height -->
+        </Grid.RowDefinitions>
+
+        <!-- Top section with background image -->
+        <AbsoluteLayout Grid.Row="0">
+            <Image Source="bck4.png"
+                   Aspect="AspectFill"
+                   Opacity="0.4"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+                   AbsoluteLayout.LayoutFlags="All" />
+
+            <!-- Title in the top section -->
+            <StackLayout VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Padding="10"
+                        AbsoluteLayout.LayoutBounds="0.5,0.5,0.8,0.5"
+                        AbsoluteLayout.LayoutFlags="All">
+                <Label Text="FAQ"
+                       FontSize="36"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </StackLayout>
+        </AbsoluteLayout>
+
+        <!-- Main content area with WebView -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <WebView Source="file:///C:/Users/user/Desktop/MauiApp2-master/Resources/Raw/faq.html"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand" />
+        </ScrollView>
+
+        <!-- Footer with buttons -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     Spacing="10" 
+                     Padding="0,10,0,0"
+                     Grid.Row="2" 
+                     VerticalOptions="End">
+            <!-- Home Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf015;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHomeButtonClicked" />
+
+            <!-- Contact Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf095;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnContactButtonClicked" />
+
+            <!-- Help Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf05a;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHelpButtonClicked" />
+
+            <!-- Map Button with FontAwesome Icon -->
+            <Button FontFamily="FontAwesome"
+                    Text="&#xf279;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMapButtonClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

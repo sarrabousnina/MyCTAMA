@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:local="clr-namespace:MauiApp2"
+             x:Class="MauiApp2.MenuPage">
+    <ContentPage.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Black"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="WidthRequest" Value="50"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="FontAwesome"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <!-- Background image covering the entire page -->
+        <Image Source="bck4.png"
+               Aspect="AspectFill"
+               Opacity="0.5"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.RowSpan="4"
+               Grid.ColumnSpan="1" />
+
+        <!-- Main Content -->
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <!-- Row for Title -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Row for CarouselView -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Row for Request Quote Section -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Row for FAQ Section -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Row for Footer -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Title Label in the top section -->
+
+                <StackLayout Padding="0"
+             VerticalOptions="Start"
+             HorizontalOptions="Start"
+             BackgroundColor="Transparent"
+             Grid.Row="0">
+                    <Image Source="logo.png" 
+           WidthRequest="55"
+           HeightRequest="55"
+           HorizontalOptions="Start"
+           VerticalOptions="Start" />
+
+                    <Label x:Name="WelcomeLabel"
+       FontSize="15"
+       TextColor="DarkOrange"
+       FontAttributes="Italic"
+       HorizontalOptions="Start"
+       VerticalOptions="Start"
+       HorizontalTextAlignment="Start"
+       VerticalTextAlignment="Start"
+       Padding="5"
+       BackgroundColor="Transparent">
+                    </Label>
+
+
+                </StackLayout>
+
+
+
+
+                <!-- CarouselView and IndicatorView -->
+                <StackLayout x:Name="CarouselContainer"
+                     Orientation="Vertical"
+                     Grid.Row="1"
+                     Margin="0,20,0,0"
+                     HorizontalOptions="Center">
+                    <Frame BorderColor="DarkGray"
+                   CornerRadius="10"
+                   HasShadow="True"
+                   Padding="0"
+                   Margin="0"
+                   WidthRequest="350" 
+                   HeightRequest="170"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                        <CarouselView x:Name="carouselView"
+                              ItemsSource="{Binding ImageSources}"
+                              WidthRequest="350"
+                              HeightRequest="170"
+                              Loop="False"
+                              PositionChanged="OnCarouselPositionChanged">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding .}"
+                                   Aspect="AspectFill"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" />
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                    </Frame>
+
+                    <!-- IndicatorView for CarouselView -->
+                    <IndicatorView x:Name="indicatorView"
+                           IndicatorColor="Gray"
+                           SelectedIndicatorColor="Black"
+                           HorizontalOptions="Center"
+                           HeightRequest="10"
+                           VerticalOptions="End">
+                        <IndicatorView.ItemsSource>
+                            <Binding Path="ItemsSource" Source="{x:Reference carouselView}" />
+                        </IndicatorView.ItemsSource>
+                    </IndicatorView>
+                </StackLayout>
+
+                <!-- Request Quote Section -->
+                <StackLayout Grid.Row="2" 
+                     Padding="10"
+                     Spacing="10"
+                     VerticalOptions="Start">
+                    <Label
+    Text="𝘿𝙚𝙢𝙖𝙣𝙙𝙚𝙯 𝙪𝙣 𝙙𝙚𝙫𝙞𝙨"
+    FontSize="17"
+    FontAttributes="Bold"
+    TextColor="DarkOrange"
+    HorizontalOptions="CenterAndExpand"
+    VerticalOptions="Center"
+    HorizontalTextAlignment="Center"
+    VerticalTextAlignment="Center"
+    Padding="12"
+    BackgroundColor="Transparent"
+    LineBreakMode="NoWrap">
+
+                    </Label>
+
+                    <ScrollView Orientation="Horizontal"
+                        VerticalOptions="Start"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="0,10">
+                        <HorizontalStackLayout Spacing="10"  
+                            Padding="10,0"
+                       HorizontalOptions="Center">
+                            <!-- Car Quote Button -->
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="2">
+                                <!-- Reduced margin -->
+                                <Frame HasShadow="True" CornerRadius="10" Padding="10" WidthRequest="150" HeightRequest="100">
+                                    <Frame.Shadow>
+                                        <Shadow Brush="Gray" Offset="6,6" Radius="8"/>
+                                    </Frame.Shadow>
+                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                                        <ImageButton Source="auto.png" WidthRequest="80" HeightRequest="40" Clicked="OnCarQuoteButtonClicked" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Label Text="Voiture" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+
+                            <!-- Agriculture Quote Button -->
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="2">
+                                <!-- Reduced margin -->
+                                <Frame HasShadow="True" CornerRadius="10" Padding="10" WidthRequest="150" HeightRequest="100">
+                                    <Frame.Shadow>
+                                        <Shadow Brush="Gray" Offset="6,6" Radius="8"/>
+                                    </Frame.Shadow>
+                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                                        <ImageButton Source="agr.png" WidthRequest="80" HeightRequest="40" Clicked="OnAgriQuoteButtonClicked" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Label Text="Agriculture" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+
+                            <!-- Habitation Quote Button -->
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="2">
+                                <!-- Reduced margin -->
+                                <Frame HasShadow="True" CornerRadius="10" Padding="10" WidthRequest="150" HeightRequest="100">
+                                    <Frame.Shadow>
+                                        <Shadow Brush="Gray" Offset="6,6" Radius="8"/>
+                                    </Frame.Shadow>
+                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                                        <ImageButton Source="hab.png" WidthRequest="80" HeightRequest="40" Clicked="OnHabButtonClicked" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Label Text="Habitation" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+
+                            <!-- Vie Quote Button -->
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="2">
+                                <!-- Reduced margin -->
+                                <Frame HasShadow="True" CornerRadius="10" Padding="10" WidthRequest="150" HeightRequest="100">
+                                    <Frame.Shadow>
+                                        <Shadow Brush="Gray" Offset="6,6" Radius="8"/>
+                                    </Frame.Shadow>
+                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                                        <ImageButton Source="vie.png" WidthRequest="80" HeightRequest="40" Clicked="OnHealthQuoteButtonClicked" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Label Text="Vie" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            </HorizontalStackLayout>
+
+                    </ScrollView>
+                </StackLayout>
+
+                <!-- FAQ Section -->
+                <StackLayout Grid.Row="3"
+                     Orientation="Vertical" 
+                     Padding="10" 
+                     Spacing="5">
+                    <Label
+    HorizontalOptions="CenterAndExpand"
+    VerticalOptions="Center"
+    HorizontalTextAlignment="Center"
+    VerticalTextAlignment="Center"
+    Padding="10"
+    BackgroundColor="Transparent">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Questions Fréquemment Posées"
+                  FontSize="17"
+                  FontAttributes="Bold, Italic"
+                  TextColor="DarkOrange" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+
+                    <ImageButton x:Name="FAQButton"
+                     Source="faqimg1.png"
+                     WidthRequest="100"
+                     HeightRequest="70"
+                     BackgroundColor="Transparent"
+                     Aspect="AspectFit"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center">
+                        <ImageButton.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnFAQButtonTapped"/>
+                        </ImageButton.GestureRecognizers>
+                    </ImageButton>
+
+                </StackLayout>
+
+                <!-- Footer with buttons -->
+                <StackLayout Grid.Row="4"
+                     Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     Spacing="10" 
+                     Padding="0,20,0,0"
+                     VerticalOptions="End">
+                    <!-- Home Button with FontAwesome Icon -->
+                    <Button FontFamily="FontAwesome"
+                    Text="&#xf015;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHomeButtonClicked" />
+
+                    <!-- Contact Button with FontAwesome Icon -->
+                    <Button FontFamily="FontAwesome"
+                    Text="&#xf095;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnContactButtonClicked" />
+
+                    <!-- Help Button with FontAwesome Icon -->
+                    <Button FontFamily="FontAwesome"
+                    Text="&#xf05a;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnHelpButtonClicked" />
+
+                    <!-- Map Button with FontAwesome Icon -->
+                    <Button FontFamily="FontAwesome"
+                    Text="&#xf279;" 
+                    FontSize="24"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMapButtonClicked" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+
+        <!-- Menu Panel -->
+        <!-- Menu Overlay -->
+        <BoxView x:Name="MenuOverlay"
+                 Color="#000"
+                 Opacity="0"
+                 IsVisible="False"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 ZIndex="0"/>
+
+        <!-- Menu Panel -->
+        <Grid x:Name="MenuPanel"
+              IsVisible="False"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              Margin="0"
+              ZIndex="1"
+              BackgroundColor="Transparent"
+              Padding="20"
+              TranslationX="0"
+              TranslationY="0">
+            <BoxView Color="MediumBlue"
+                    Opacity="0.05"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <Grid VerticalOptions="Center"
+      HorizontalOptions="Center">
+                <StackLayout Spacing="12" Padding="15" HorizontalOptions="Start">
+                    <!-- Home Button with Icon -->
+                    <Grid ColumnDefinitions="Auto, Auto" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Label x:Name="HomeIcon"
+               Grid.Column="0"
+               Text="&#xf015;" 
+               FontFamily="FontAwesome"
+               FontSize="24"
+               TextColor="DarkOrange"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnHomeButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                        <Label x:Name="HomeText"
+               Grid.Column="1"
+               Text="Home"
+               TextColor="DarkOrange"
+               FontSize="18"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Margin="10,0,0,0"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnHomeButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                    </Grid>
+
+                    <!-- Contact Button with Icon -->
+                    <Grid ColumnDefinitions="Auto, Auto" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Label x:Name="ContactIcon"
+               Grid.Column="0"
+               Text="&#xf0e0;" 
+               FontFamily="FontAwesome"
+               FontSize="24"
+               TextColor="DarkOrange"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnContactButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                        <Label x:Name="ContactText"
+               Grid.Column="1"
+               Text="Contact"
+               TextColor="DarkOrange"
+               FontSize="18"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Margin="10,0,0,0"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnContactButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                    </Grid>
+
+                    <!-- Help Button with Icon -->
+                    <Grid ColumnDefinitions="Auto, Auto" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Label x:Name="HelpIcon"
+               Grid.Column="0"
+               Text="&#xf128;" 
+               FontFamily="FontAwesome"
+               FontSize="24"
+               TextColor="DarkOrange"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnHelpButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                        <Label x:Name="HelpText"
+               Grid.Column="1"
+               Text="Help"
+               TextColor="DarkOrange"
+               FontSize="18"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Margin="10,0,0,0"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnHelpButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                    </Grid>
+
+                    <!-- Map Button with Icon -->
+                    <Grid ColumnDefinitions="Auto, Auto" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Label x:Name="MapIcon"
+               Grid.Column="0"
+               Text="&#xf041;" 
+               FontFamily="FontAwesome"
+               FontSize="24"
+               TextColor="DarkOrange"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnMapButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                        <Label x:Name="MapText"
+               Grid.Column="1"
+               Text="Map"
+               TextColor="DarkOrange"
+               FontSize="18"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               Margin="10,0,0,0"
+               Opacity="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnMapButtonClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!-- Initial opacity set to 0 -->
+                    </Grid>
+                </StackLayout>
+
+
+            </Grid>
+
+
+        </Grid>
+
+        <!-- Menu Button at the top right -->
+        <Button x:Name="MenuButton"
+                FontFamily="FontAwesome"
+                FontSize="24"
+                TextColor="Black"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                Clicked="OnMenuButtonClicked"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="20"
+                ZIndex="2">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding IsVisible, Source={x:Reference MenuPanel}}" Value="True">
+                    <Setter Property="Text" Value="&#xf00d;" />
+                </DataTrigger>
+                <DataTrigger TargetType="Button" Binding="{Binding IsVisible, Source={x:Reference MenuPanel}}" Value="False">
+                    <Setter Property="Text" Value="&#xf0c9;" />
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+    </Grid>
+</ContentPage>

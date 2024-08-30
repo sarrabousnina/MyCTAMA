@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Button</title>
+    <style>
+        /* Hide scrollbars */
+        body {
+            overflow: hidden; /* Hides all scrollbars */
+        }
+
+        /* Styling for the button */
+        .button {
+            overflow: hidden; /* Hides any scrollbars within the button */
+            width: 160px; /* Smaller width */
+            height: 40px; /* Smaller height */
+            background: #1c4992; /* Blue color */
+            border-radius: 6px;
+            transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Ensure proper positioning of the circle */
+            font-size: 1.2em; /* Adjust font size for the text */
+            color: white;
+            text-align: center;
+            cursor: pointer; /* Ensure cursor changes to a hand on hover */
+        }
+
+        .button__circle {
+            width: 30px; /* Smaller size of the green circle */
+            height: 30px; /* Smaller size of the green circle */
+            background: mediumseagreen;
+            border-radius: 50%;
+            position: absolute; /* Position the circle absolutely */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Offset the circle's center */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .3s;
+        }
+
+        .button:hover {
+            cursor: pointer;
+        }
+
+        .tick {
+            color: white;
+            font-size: 1em; /* Adjust font size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+            .tick svg {
+                width: 16px; /* Adjusted width of the SVG */
+                height: 16px; /* Adjusted height of the SVG */
+            }
+    </style>
+</head>
+<body>
+    <div class="button" id="loginButton">
+        <div class="tick" id="buttonText">
+            <!-- SVG for the tick mark will be inserted here -->
+        </div>
+    </div>
+    <script>
+        let button = document.getElementById('loginButton');
+        let buttonText = document.getElementById('buttonText');
+
+        const tickMark = "<svg width=\"16\" height=\"16\" viewBox=\"0 0 58 45\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"#fff\" fill-rule=\"nonzero\" d=\"M19.11 44.64L.27 25.81l5.66-5.66 13.18 13.18L52.07.38l5.65 5.65\"/></svg>";
+
+        buttonText.innerHTML = "Se connecter"; // Default text
+
+        button.addEventListener('click', function () {
+            if (buttonText.innerHTML !== "Se connecter") {
+                buttonText.innerHTML = "Se connecter";
+                this.classList.remove('button__circle');
+            } else {
+                buttonText.innerHTML = tickMark;
+                this.classList.add('button__circle');
+                // Notify MAUI application of login attempt
+                window.external.notify('loginAttempt');
+            }
+        });
+    </script>
+</body>
+</html>
